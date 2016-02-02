@@ -15,6 +15,18 @@ class Sudoku:
     def set(self, line, column, value):
         self.puzzle[line * self.WIDTH + column] = value
 
+    def get_line(self, line_index):
+        line =[]
+        for column in range(self.WIDTH):
+            line.append(self.get(line, column))
+        return line
+
+    def get_column(self, column_index):
+        column =[]
+        for line in range(self.WIDTH):
+            column.append(self.get(line, column))
+        return column
+
     def missing_numbers(self):
         # create a list with every possible number.
         # Ex: nine ones, nine twos, etc...
@@ -35,8 +47,11 @@ class Sudoku:
                 if self.get(line, column) == Sudoku.EMPTY:
                     self.set(line, column, missing.pop(0))
 
-    def evaluate(self):
-        pass
+    def evaluate_line_errors(self):
+        line = self.get_line(0)
+        line_set = set(line)
+        error_number = self.WIDTH - len(line_set)
+        return error_number
 
     def copy(self):
         return Sudoku(self.puzzle)
