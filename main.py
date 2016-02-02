@@ -10,7 +10,7 @@ Heurística escolhida:
 
 """
 
-from hill_clibing_sudoku_solver import HillClibingSudokuSolver
+from hill_climbing_sudoku_solver import HillClimbingSudokuSolver
 from sudoku import Sudoku
 
 _ = Sudoku.EMPTY

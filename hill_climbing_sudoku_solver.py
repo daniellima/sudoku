@@ -1,6 +1,6 @@
 # coding: utf-8
 
-class HillClibingSudokuSolver:
+class HillClimbingSudokuSolver:
 
     def __init__(self, sudoku, steps):
         self.sudoku = sudoku
