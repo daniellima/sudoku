@@ -28,7 +28,7 @@ sudoku = Sudoku([
     _, 4, _,   _, _, _,   3, _, _
 ])
 
-solver = HillClibingSudokuSolver(sudoku, steps=50)
+solver = HillClimbingSudokuSolver(sudoku, steps=50)
 solved = solver.solve()
 print(solved)
 
