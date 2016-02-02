@@ -30,6 +30,6 @@ sudoku = Sudoku([
 
 solver = HillClibingSudokuSolver(sudoku, steps=50)
 solved = solver.solve()
-print solved
+print(solved)
 
 #print [i for n in range(self.WIDTH) for i in [n] * self.WIDTH]

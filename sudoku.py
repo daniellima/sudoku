@@ -18,7 +18,11 @@ class Sudoku:
     def missing_numbers(self):
         # create a list with every possible number.
         # Ex: nine ones, nine twos, etc...
-        all = [i for n in range(self.WIDTH) for i in [n+1] * self.WIDTH]
+        all = []
+        for n in range(self.WIDTH):
+            for i in [n+1] * self.WIDTH:
+                all.append(i)
+
         for line in range(self.WIDTH):
             for column in range(self.WIDTH):
                 if not self.get(line, column) == Sudoku.EMPTY:
@@ -32,7 +36,7 @@ class Sudoku:
                     self.set(line, column, missing.pop(0))
 
     def evaluate(self):
-        
+        pass
 
     def copy(self):
         return Sudoku(self.puzzle)
