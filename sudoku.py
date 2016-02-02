@@ -49,6 +49,7 @@ class Sudoku:
 
     def evaluate_line_errors(self):
         line = self.get_line(0)
+        # para saber quantos números diferentes estão na lista line
         line_set = set(line)
         error_number = self.WIDTH - len(line_set)
         return error_number
