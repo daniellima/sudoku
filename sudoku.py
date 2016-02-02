@@ -18,13 +18,13 @@ class Sudoku:
     def get_line(self, line_index):
         line =[]
         for column in range(self.WIDTH):
-            line.append(self.get(line, column))
+            line.append(self.get(line_index, column))
         return line
 
     def get_column(self, column_index):
         column =[]
         for line in range(self.WIDTH):
-            column.append(self.get(line, column))
+            column.append(self.get(line, column_index))
         return column
 
     def missing_numbers(self):
@@ -48,11 +48,14 @@ class Sudoku:
                     self.set(line, column, missing.pop(0))
 
     def evaluate_line_errors(self):
-        line = self.get_line(0)
-        # para saber quantos números diferentes estão na lista line
-        line_set = set(line)
-        error_number = self.WIDTH - len(line_set)
-        return error_number
+        error_number_lines = 0
+        for line_number in range(self.WIDTH):
+            line = self.get_line(line_number)
+            # para saber quantos números diferentes estão na lista line
+            line_set = set(line)
+            error_number = self.WIDTH - len(line_set)
+            error_number_lines += error_number
+        return error_number_lines
 
     def copy(self):
         return Sudoku(self.puzzle)
