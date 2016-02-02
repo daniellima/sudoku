@@ -20,8 +20,8 @@ class Sudoku:
         # Ex: nine ones, nine twos, etc...
         all = []
         for n in range(self.WIDTH):
-            for i in [n+1] * self.WIDTH:
-                all.append(i)
+            i = [n+1] * self.WIDTH
+            all.extend(i)
 
         for line in range(self.WIDTH):
             for column in range(self.WIDTH):
