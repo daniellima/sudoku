@@ -30,9 +30,46 @@ sudoku = Sudoku([
     _, 4, _,   _, _, _,   3, _, _
 ])
 
-ga = GeneticAlgorithm(sudoku, 2)
+ga = GeneticAlgorithm(sudoku, 1)
 
-population = ga.generate_population()
+ind = ga.generate_individual_indexed_list()
 
-print(population)
-print(len(population))
+print('Essa é a lista dos numeros faltando', sudoku.missing_numbers())
+
+print("Esse é a lista de individuo:", ind)
+individual = ga.get_individual_from_indexed_list(ind)
+
+print("Essa é o individuo real", individual)
+um, dois, tres, quatro, cinco, seis, sete, oito, nove = 0,0,0,0,0,0,0,0,0
+for i in individual:
+    if i == 1:
+        um += 1
+    elif i == 2:
+        dois += 1
+    elif i == 3:
+        tres += 1
+    elif i == 4:
+        quatro += 1
+    elif i == 5:
+        cinco += 1
+    elif i == 6:
+        seis += 1
+    elif i == 7:
+        sete += 1
+    elif i == 8:
+        oito += 1
+    elif i == 9:
+        nove += 1
+
+print('Um', um)
+print('Dois', dois)
+print('Tres', tres)
+print('Quatro', quatro)
+print('Cinco', cinco)
+print('Seis', seis)
+print('Sete', sete)
+print('Oito', oito)
+print('Nove', nove)
+
+
+
