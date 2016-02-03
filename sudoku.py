@@ -21,7 +21,7 @@ class Sudoku:
         swaps = []
         for i in range(len(self.emptyIndexes)):
             for j in range(i+1, len(self.emptyIndexes)):
-                swaps.append( [self.emptyIndexes[i], self.emptyIndexes[j]] )
+                swaps.append([self.emptyIndexes[i], self.emptyIndexes[j]])
 
         return swaps
 
