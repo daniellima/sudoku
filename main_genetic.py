@@ -31,24 +31,37 @@ sudoku = Sudoku([
 
 ga = GeneticAlgorithm(sudoku, 4)
 
-ind = ga.generate_individual_indexed_list()
-
-print('Essa é a lista dos numeros faltando', sudoku.missing_numbers())
-
-print("Esse é a lista de individuo:", ind)
-individual = ga.get_individual_from_indexed_list(ind)
-
-print("Essa é o individuo real", individual)
-
-fitness_value = ga.fitness_function(ind)
-print('fitnes value', fitness_value)
+# ind = ga.generate_individual_indexed_list()
+#
+# print('Essa é a lista dos numeros faltando', sudoku.missing_numbers())
+#
+# print("Esse é a lista de individuo:", ind)
+# individual = ga.get_individual_from_indexed_list(ind)
+#
+# print("Essa é o individuo real", individual)
+#
+# fitness_value = ga.fitness_function(ind)
+# print('fitnes value', fitness_value)
 
 pop = ga.generate_population()
-print('population', pop)
-ga.crossover(pop)
-print('population', pop)
 
-print(ga.select(pop))
+for p in pop:
+    print('individuo: ', p)
+
+selected = ga.select(pop)
+
+for p in selected:
+    print('individuo selecionado: ', p)
+
+ga.crossover(pop)
+for p in pop:
+    print('individuo depois crossover: ', p)
+
+for p in pop:
+    p = ga.mutation(p)
+    print('individuo pós mutação', p)
+
+
 
 # um, dois, tres, quatro, cinco, seis, sete, oito, nove = 0,0,0,0,0,0,0,0,0
 # for i in individual:
