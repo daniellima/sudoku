@@ -1,5 +1,4 @@
 # coding: utf-8
-from __future__ import division
 
 # Trabalho Sudoku
 # Alunos: Annanda Sousa, Daniel Lima e Tayssa Vandelli
