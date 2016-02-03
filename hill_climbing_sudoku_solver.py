@@ -33,6 +33,17 @@ class HillClimbingSudokuSolver:
                 print "Triste."
                 print self.sudoku
                 print self.sudoku.evaluate()
+                # muitas mudanças aleatorias para evitar que ele caia nesse maximo local novamente
+                self.sudoku.swap(random.choice(self.sudoku.emptyIndexes), random.choice(self.sudoku.emptyIndexes))
+                self.sudoku.swap(random.choice(self.sudoku.emptyIndexes), random.choice(self.sudoku.emptyIndexes))
+                self.sudoku.swap(random.choice(self.sudoku.emptyIndexes), random.choice(self.sudoku.emptyIndexes))
+                self.sudoku.swap(random.choice(self.sudoku.emptyIndexes), random.choice(self.sudoku.emptyIndexes))
+                self.sudoku.swap(random.choice(self.sudoku.emptyIndexes), random.choice(self.sudoku.emptyIndexes))
+                self.sudoku.swap(random.choice(self.sudoku.emptyIndexes), random.choice(self.sudoku.emptyIndexes))
+                self.sudoku.swap(random.choice(self.sudoku.emptyIndexes), random.choice(self.sudoku.emptyIndexes))
+                self.sudoku.swap(random.choice(self.sudoku.emptyIndexes), random.choice(self.sudoku.emptyIndexes))
+                self.sudoku.swap(random.choice(self.sudoku.emptyIndexes), random.choice(self.sudoku.emptyIndexes))
+                self.sudoku.swap(random.choice(self.sudoku.emptyIndexes), random.choice(self.sudoku.emptyIndexes))
                 self.sudoku.swap(random.choice(self.sudoku.emptyIndexes), random.choice(self.sudoku.emptyIndexes))
                 continue
 
