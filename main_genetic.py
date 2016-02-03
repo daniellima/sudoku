@@ -34,7 +34,7 @@ ga = GeneticAlgorithm(sudoku)
 solver = GeneticSolver(
     sudoku,
     steps = 500,
-    population_size = 4,
+    population_size = 6,
     crossover_chance = 0.8,
     mutation_chance = 0.01
     )
@@ -49,3 +49,35 @@ sudoku.fill_missing(ind)
 
 print(sudoku)
 print(sudoku.evaluate())
+
+um, dois, tres, quatro, cinco, seis, sete, oito, nove = 0,0,0,0,0,0,0,0,0
+for i in sudoku.puzzle:
+ if i == 1:
+     um += 1
+ elif i == 2:
+     dois += 1
+ elif i == 3:
+     tres += 1
+ elif i == 4:
+     quatro += 1
+ elif i == 5:
+     cinco += 1
+ elif i == 6:
+     seis += 1
+ elif i == 7:
+     sete += 1
+ elif i == 8:
+     oito += 1
+ elif i == 9:
+     nove += 1
+
+print('\nUm', um)
+print('Dois', dois)
+print('Tres', tres)
+print('Quatro', quatro)
+print('Cinco', cinco)
+print('Seis', seis)
+print('Sete', sete)
+print('Oito', oito)
+print('Nove', nove)
+

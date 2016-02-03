@@ -85,5 +85,7 @@ class GeneticAlgorithm:
         auxiliar_list = list(range(len(self.missing)))
         auxiliar_list.reverse()
         individual[mutation_position] = random.choice(range(auxiliar_list[mutation_position]+1))
+
         #print("houve mutacao")
+
         return individual

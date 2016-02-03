@@ -12,8 +12,9 @@ class GeneticSolver:
         self.mutation_chance = mutation_chance
 
     def solve(self):
+
         ga = GeneticAlgorithm(self.sudoku)
-        population = ga.generate_population(self.population_size);
+        population = ga.generate_population(self.population_size)
 
         pop = population
         for _ in range(self.steps):
