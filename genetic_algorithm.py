@@ -7,9 +7,12 @@ from utils import get_initial_sudoku
 
 class GeneticAlgorithm:
 
-    def __init__(self, puzzle, population_size):
-        self.puzzle = puzzle
-        self.missing = self.puzzle.missing_numbers()
+    CROSSOVER_CHANCE = 0.8
+    MUTATION_CHANCE = 0.01
+
+    def __init__(self, sudoku, population_size):
+        self.sudoku = sudoku
+        self.missing = self.sudoku.missing_numbers()
         self.population_size = population_size
         pass
 
@@ -48,7 +51,7 @@ class GeneticAlgorithm:
                 # o ultimo continua
                 continue
             random.seed()
-            if random.random() > 0.8: # 80% de chance de crossover
+            if random.random() > self.CROSSOVER_CHANCE: # 80% de chance de crossover
                 continue
 
             ind1 = population[i]
@@ -58,16 +61,6 @@ class GeneticAlgorithm:
 
             population[i] = ind1[0:point] + ind2[point:]
             population[i+1] = ind2[0:point] + ind1[point:]
-
-    def mutation_function(self, individual_indexed_list):
-        numbers_to_mutate = random.sample(individual_indexed_list,2)
-
-        number1 = numbers_to_mutate[0];
-        number2 = numbers_to_mutate[1];
-
-        numbers_to_mutate[0] = number2
-        numbers_to_mutate[1] = number1
-
 
     def select(self, population):
         pop = list(population)
@@ -89,3 +82,11 @@ class GeneticAlgorithm:
                     break
 
         return selected
+
+    def mutation(self, individual):
+        mutation_position = random.choice(range(len(self.sudoku.emptyIndexes)))
+        auxiliar_list = range(self.sudoku.emptyIndexes)
+        auxiliar_list.reverse()
+        individual[mutation_position] = random.choice(range(auxiliar_list[mutation_position]+1))
+        return individual
+
