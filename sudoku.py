@@ -8,12 +8,23 @@ class Sudoku:
         self.WIDTH = self.SIZE * self.SIZE
         #  "list" creates a copy of a list
         self.puzzle = list(puzzle)
+        # vai ser usado depois para saber que trocas serão possíveis
+        self.emptyIndexes = [i for i in range(len(self.puzzle)) if self.puzzle[i] == Sudoku.EMPTY]
 
     def get(self, line, column):
         return self.puzzle[line * self.WIDTH + column]
 
     def set(self, line, column, value):
         self.puzzle[line * self.WIDTH + column] = value
+
+    def get_possible_swaps(self):
+        swaps = []
+        for i in range(len(self.emptyIndexes)):
+            for j in range(i+1, len(self.emptyIndexes)):
+                swaps.append( [self.emptyIndexes[i], self.emptyIndexes[j]] )
+
+        return swaps
+
 
     def get_line(self, line_index):
         line =[]
