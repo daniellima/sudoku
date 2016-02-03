@@ -44,6 +44,9 @@ print("Essa é o individuo real", individual)
 fitness_value = ga.fitness_function(ind)
 print('fitnes value', fitness_value)
 
+mutation_function = ga.mutation_function(ind)
+print('mutacao', mutation_function)
+
 # um, dois, tres, quatro, cinco, seis, sete, oito, nove = 0,0,0,0,0,0,0,0,0
 # for i in individual:
 #     if i == 1:

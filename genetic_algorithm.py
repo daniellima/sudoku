@@ -42,3 +42,14 @@ class GeneticAlgorithm:
         individual = self.get_individual_from_indexed_list(individual_indexed_list)
         new_sudoku.fill_missing(individual)
         return 216 - new_sudoku.evaluate()
+
+    def mutation_function(self, individual_indexed_list):
+        numbers_to_mutate = random.sample(individual_indexed_list,2)
+        
+        number1 = numbers_to_mutate[0];
+        number2 = numbers_to_mutate[1];
+
+        numbers_to_mutate[0] = number2
+        numbers_to_mutate[1] = number1
+
+        return numbers_to_mutate
