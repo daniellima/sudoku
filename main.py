@@ -7,7 +7,7 @@ from __future__ import division
 # Ideia do código
 """
 Heurística escolhida:
-
+Minimizar a quantidade de erros de números dispostos no tabuleiro.
 
 """
 
