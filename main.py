@@ -29,13 +29,14 @@ sudoku = Sudoku([
     _, 4, _,   _, _, _,   3, _, _
 ])
 
-solver = HillClimbingSudokuSolver(sudoku, steps=500)
+solver = HillClimbingSudokuSolver(sudoku, steps=5000)
 solved = solver.solve()
 print(solved)
 print("Número de erros:", sudoku.evaluate())
 
 # missing = sudoku.missing_numbers()
-# sudoku.random_fill_missing(missing)
+# sudoku.fill_missing(missing)
+# print(sudoku)
 
 # print sudoku
 # print sudoku.evaluate()

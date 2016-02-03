@@ -73,11 +73,9 @@ class Sudoku:
                     all.remove(self.get(line, column))
         return all
 
-    def random_fill_missing(self, missing):
-        for line in range(self.WIDTH):
-            for column in range(self.WIDTH):
-                if self.get(line, column) == Sudoku.EMPTY:
-                    self.set(line, column, missing.pop(0))
+    def fill_missing(self, missing):
+        for i in range(len(self.emptyIndexes)):
+            self.puzzle[self.emptyIndexes[i]] = missing.pop(0)
 
     def evaluate_line_errors(self):
         error_number_lines = 0
