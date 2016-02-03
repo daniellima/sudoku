@@ -1,6 +1,6 @@
 # coding: utf-8
-
 class Sudoku:
+
     SIZE = 3
     EMPTY = 0
 
@@ -21,7 +21,7 @@ class Sudoku:
         swaps = []
         for i in range(len(self.emptyIndexes)):
             for j in range(i+1, len(self.emptyIndexes)):
-                swaps.append( [self.emptyIndexes[i], self.emptyIndexes[j]] )
+                swaps.append([self.emptyIndexes[i], self.emptyIndexes[j]])
 
         return swaps
 
@@ -41,6 +41,19 @@ class Sudoku:
         for line in range(self.WIDTH):
             column.append(self.get(line, column_index))
         return column
+
+    def get_block(self, block_index):
+        block =[]
+
+        init_for_range_line = (block_index // self.SIZE) * self.SIZE
+        end_for_range_line = init_for_range_line + 3
+
+        init_for_range_col = (block_index * self.SIZE) % 9
+        end_for_range_col = init_for_range_col + self.SIZE
+        for line_index in range(init_for_range_line, end_for_range_line):
+            for column_index in range(init_for_range_col, end_for_range_col):
+                block.append(self.get(line_index, column_index))
+        return block
 
     def missing_numbers(self):
         # create a list with every possible number.
@@ -66,11 +79,33 @@ class Sudoku:
         error_number_lines = 0
         for line_number in range(self.WIDTH):
             line = self.get_line(line_number)
-            # para saber quantos números diferentes estão na lista line
+            # to know how many different numbers there are in line list
             line_set = set(line)
             error_number = self.WIDTH - len(line_set)
             error_number_lines += error_number
         return error_number_lines
+
+    def evaluate_column_errors(self):
+        error_number_columns = 0
+        for column_number in range(self.WIDTH):
+            column = self.get_column(column_number)
+            # to know how many different numbers there are in column list
+            column_set = set(column)
+            error_number = self.WIDTH - len(column_set)
+            print(error_number)
+            error_number_columns += error_number
+        return error_number_columns
+
+    def evaluate_block_errors(self):
+        error_number_block = 0
+        for block_number in range(self.WIDTH):
+            block = self.get_block(block_number)
+            # to know how many different numbers there are in  block list
+            block_set = set(block)
+            error_number = self.WIDTH - len(block_set)
+            print(error_number)
+            error_number_block += error_number
+        return error_number_block
 
     def copy(self):
         return Sudoku(self.puzzle)
