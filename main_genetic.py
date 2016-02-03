@@ -29,9 +29,16 @@ sudoku = Sudoku([
     _, 4, _,   _, _, _,   3, _, _
 ])
 
-ga = GeneticAlgorithm(sudoku, 4)
+ga = GeneticAlgorithm(sudoku)
 
-solver = GeneticSolver(sudoku, steps=50, population_size=4)
+solver = GeneticSolver(
+    sudoku,
+    steps = 500,
+    population_size = 4,
+    crossover_chance = 0.8,
+    mutation_chance = 0.01
+    )
+
 population = solver.solve()
 
 population.sort(key=lambda ind: ga.fitness_function(ind))
@@ -55,23 +62,23 @@ print(sudoku.evaluate())
 # fitness_value = ga.fitness_function(ind)
 # print('fitnes value', fitness_value)
 
-pop = ga.generate_population()
-
-for p in pop:
-    print('individuo: ', p)
-
-selected = ga.select(pop)
-
-for p in selected:
-    print('individuo selecionado: ', p)
-
-ga.crossover(pop)
-for p in pop:
-    print('individuo depois crossover: ', p)
-
-for p in pop:
-    p = ga.mutation(p)
-    print('individuo pós mutação', p)
+# pop = ga.generate_population()
+#
+# for p in pop:
+#     print('individuo: ', p)
+#
+# selected = ga.select(pop)
+#
+# for p in selected:
+#     print('individuo selecionado: ', p)
+#
+# ga.crossover(pop)
+# for p in pop:
+#     print('individuo depois crossover: ', p)
+#
+# for p in pop:
+#     p = ga.mutation(p)
+#     print('individuo pós mutação', p)
 
 
 

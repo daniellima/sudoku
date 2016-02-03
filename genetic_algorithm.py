@@ -7,14 +7,9 @@ from utils import get_initial_sudoku
 
 class GeneticAlgorithm:
 
-    CROSSOVER_CHANCE = 0.8
-    MUTATION_CHANCE = 0.01
-
-    def __init__(self, sudoku, population_size):
+    def __init__(self, sudoku):
         self.sudoku = sudoku
         self.missing = self.sudoku.missing_numbers()
-        self.population_size = population_size
-        pass
 
     def generate_individual_indexed_list(self):
         individual_indexed_list = []
@@ -25,9 +20,9 @@ class GeneticAlgorithm:
             individual_size -= 1
         return individual_indexed_list
 
-    def generate_population(self):
+    def generate_population(self, population_size):
         population = []
-        for i in range(self.population_size):
+        for i in range(population_size):
             population.append(self.generate_individual_indexed_list())
         return population
 
@@ -45,13 +40,13 @@ class GeneticAlgorithm:
         new_sudoku.fill_missing(individual)
         return 216 - new_sudoku.evaluate()
 
-    def crossover(self, population):
+    def crossover(self, population, chance = 0.8):
         for i in range(0, len(population), 2):
             if i+1 == len(population): #população impar
                 # o ultimo continua
                 continue
             random.seed()
-            if random.random() > self.CROSSOVER_CHANCE: # 80% de chance de crossover
+            if random.random() > chance: # 80% de chance de crossover
                 continue
 
             ind1 = population[i]
@@ -83,12 +78,12 @@ class GeneticAlgorithm:
 
         return selected
 
-    def mutation(self, individual):
-        if random.random() > self.MUTATION_CHANCE: # mutation chance
+    def mutation(self, individual, chance = 0.1):
+        if random.random() > chance: # mutation chance
             return individual
-        mutation_position = random.choice(range(len(self.sudoku.emptyIndexes)))
-        auxiliar_list = list(range(len(self.sudoku.emptyIndexes)))
+        mutation_position = random.choice(range(len(self.missing)))
+        auxiliar_list = list(range(len(self.missing)))
         auxiliar_list.reverse()
         individual[mutation_position] = random.choice(range(auxiliar_list[mutation_position]+1))
-        print("houve mutacao")
+        #print("houve mutacao")
         return individual
