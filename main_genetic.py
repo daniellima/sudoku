@@ -41,7 +41,7 @@ individual = ga.get_individual_from_indexed_list(ind)
 
 print("Essa é o individuo real", individual)
 
-fitness_value = ga.fitness_function(individual)
+fitness_value = ga.fitness_function(ind)
 print('fitnes value', fitness_value)
 
 # um, dois, tres, quatro, cinco, seis, sete, oito, nove = 0,0,0,0,0,0,0,0,0
@@ -74,6 +74,3 @@ print('fitnes value', fitness_value)
 # print('Sete', sete)
 # print('Oito', oito)
 # print('Nove', nove)
-
-
-

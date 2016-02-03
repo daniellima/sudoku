@@ -10,13 +10,14 @@ class GeneticAlgorithm:
 
     def __init__(self, puzzle, population_size):
         self.puzzle = puzzle
+        self.missing = self.puzzle.missing_numbers()
         self.population_size = population_size
         pass
 
     def generate_individual_indexed_list(self):
         individual_indexed_list = []
-        individual_size = len(self.puzzle.emptyIndexes)
-        for i in range(len(self.puzzle.emptyIndexes)):
+        individual_size = len(self.missing)
+        for i in range(len(self.missing)):
             choice = random.choice(range(individual_size))
             individual_indexed_list.append(choice)
             individual_size -= 1
@@ -29,7 +30,7 @@ class GeneticAlgorithm:
         return population
 
     def get_individual_from_indexed_list(self, individual_indexed_list):
-        missing_numbers = self.puzzle.missing_numbers()
+        missing_numbers = list(self.missing)
         individual = []
         for i in individual_indexed_list:
             individual.append(missing_numbers[i])
@@ -39,5 +40,5 @@ class GeneticAlgorithm:
     def fitness_function(self, individual_indexed_list):
         new_sudoku = get_initial_sudoku()
         individual = self.get_individual_from_indexed_list(individual_indexed_list)
-        new_sudoku.fill_missing()
-        return (new_sudoku.WIDTH * new_sudoku.WIDTH) - new_sudoku.evaluate()
+        new_sudoku.fill_missing(individual)
+        return 216 - new_sudoku.evaluate()
