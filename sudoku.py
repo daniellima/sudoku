@@ -84,12 +84,23 @@ class Sudoku:
         error_number_columns = 0
         for column_number in range(self.WIDTH):
             column = self.get_column(column_number)
-            # to know how many different numbers there are in line column
+            # to know how many different numbers there are in column list
             column_set = set(column)
             error_number = self.WIDTH - len(column_set)
             print(error_number)
             error_number_columns += error_number
         return error_number_columns
+
+    def evaluate_block_errors(self):
+        error_number_block = 0
+        for block_number in range(self.WIDTH):
+            block = self.get_block(block_number)
+            # to know how many different numbers there are in  block list
+            block_set = set(block)
+            error_number = self.WIDTH - len(block_set)
+            print(error_number)
+            error_number_block += error_number
+        return error_number_block
 
     def copy(self):
         return Sudoku(self.puzzle)
