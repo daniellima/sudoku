@@ -39,9 +39,15 @@ class Sudoku:
 
     def get_block(self, block_index):
         block =[]
-        for line in range(self.SIZE):
-            for column in range(self.SIZE):
-                block.append(self.get(line, column))
+
+        init_for_range_line = (block_index // self.SIZE) * self.SIZE
+        end_for_range_line = init_for_range_line + 3
+
+        init_for_range_col = (block_index * self.SIZE) % 9
+        end_for_range_col = init_for_range_col + self.SIZE
+        for line_index in range(init_for_range_line, end_for_range_line):
+            for column_index in range(init_for_range_col, end_for_range_col):
+                block.append(self.get(line_index, column_index))
         return block
 
     def missing_numbers(self):
