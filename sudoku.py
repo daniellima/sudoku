@@ -1,6 +1,6 @@
 # coding: utf-8
-
 class Sudoku:
+
     SIZE = 3
     EMPTY = 0
 
@@ -24,7 +24,6 @@ class Sudoku:
                 swaps.append( [self.emptyIndexes[i], self.emptyIndexes[j]] )
 
         return swaps
-
 
     def get_line(self, line_index):
         line =[]
@@ -69,11 +68,22 @@ class Sudoku:
         error_number_lines = 0
         for line_number in range(self.WIDTH):
             line = self.get_line(line_number)
-            # para saber quantos números diferentes estão na lista line
+            # to know how many different numbers there are in line list
             line_set = set(line)
             error_number = self.WIDTH - len(line_set)
             error_number_lines += error_number
         return error_number_lines
+
+    def evaluate_column_errors(self):
+        error_number_columns = 0
+        for column_number in range(self.WIDTH):
+            column = self.get_column(column_number)
+            # to know how many different numbers there are in line column
+            column_set = set(column)
+            error_number = self.WIDTH - len(column_set)
+            print(error_number)
+            error_number_columns += error_number
+        return error_number_columns
 
     def copy(self):
         return Sudoku(self.puzzle)

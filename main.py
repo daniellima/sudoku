@@ -28,8 +28,8 @@ sudoku = Sudoku([
     _, 4, _,   _, _, _,   3, _, _
 ])
 
-solver = HillClimbingSudokuSolver(sudoku, steps=50)
-solved = solver.solve()
-print(solved)
+# solver = HillClimbingSudokuSolver(sudoku, steps=50)
+# solved = solver.solve()
+# print(solved)
 
 #print [i for n in range(self.WIDTH) for i in [n] * self.WIDTH]
