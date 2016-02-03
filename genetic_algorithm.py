@@ -3,6 +3,7 @@ from __future__ import division
 import random
 
 from sudoku import Sudoku
+from utils import get_initial_sudoku
 
 
 class GeneticAlgorithm:
@@ -34,3 +35,9 @@ class GeneticAlgorithm:
             individual.append(missing_numbers[i])
             missing_numbers[i:i+1] = []
         return individual
+
+    def fitness_function(self, individual_indexed_list):
+        new_sudoku = get_initial_sudoku()
+        individual = self.get_individual_from_indexed_list(individual_indexed_list)
+        new_sudoku.fill_missing()
+        return (new_sudoku.WIDTH * new_sudoku.WIDTH) - new_sudoku.evaluate()

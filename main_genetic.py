@@ -40,36 +40,40 @@ print("Esse é a lista de individuo:", ind)
 individual = ga.get_individual_from_indexed_list(ind)
 
 print("Essa é o individuo real", individual)
-um, dois, tres, quatro, cinco, seis, sete, oito, nove = 0,0,0,0,0,0,0,0,0
-for i in individual:
-    if i == 1:
-        um += 1
-    elif i == 2:
-        dois += 1
-    elif i == 3:
-        tres += 1
-    elif i == 4:
-        quatro += 1
-    elif i == 5:
-        cinco += 1
-    elif i == 6:
-        seis += 1
-    elif i == 7:
-        sete += 1
-    elif i == 8:
-        oito += 1
-    elif i == 9:
-        nove += 1
 
-print('Um', um)
-print('Dois', dois)
-print('Tres', tres)
-print('Quatro', quatro)
-print('Cinco', cinco)
-print('Seis', seis)
-print('Sete', sete)
-print('Oito', oito)
-print('Nove', nove)
+fitness_value = ga.fitness_function(individual)
+print('fitnes value', fitness_value)
+
+# um, dois, tres, quatro, cinco, seis, sete, oito, nove = 0,0,0,0,0,0,0,0,0
+# for i in individual:
+#     if i == 1:
+#         um += 1
+#     elif i == 2:
+#         dois += 1
+#     elif i == 3:
+#         tres += 1
+#     elif i == 4:
+#         quatro += 1
+#     elif i == 5:
+#         cinco += 1
+#     elif i == 6:
+#         seis += 1
+#     elif i == 7:
+#         sete += 1
+#     elif i == 8:
+#         oito += 1
+#     elif i == 9:
+#         nove += 1
+#
+# print('Um', um)
+# print('Dois', dois)
+# print('Tres', tres)
+# print('Quatro', quatro)
+# print('Cinco', cinco)
+# print('Seis', seis)
+# print('Sete', sete)
+# print('Oito', oito)
+# print('Nove', nove)
 
 
 
