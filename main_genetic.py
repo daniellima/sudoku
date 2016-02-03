@@ -31,6 +31,18 @@ sudoku = Sudoku([
 
 ga = GeneticAlgorithm(sudoku, 4)
 
+solver = GeneticSolver(sudoku, steps=50, population_size=4)
+population = solver.solve()
+
+population.sort(key=lambda ind: ga.fitness_function(ind))
+
+ind = ga.get_individual_from_indexed_list(population[-1:][0])
+
+sudoku.fill_missing(ind)
+
+print(sudoku)
+print(sudoku.evaluate())
+
 # ind = ga.generate_individual_indexed_list()
 #
 # print('Essa é a lista dos numeros faltando', sudoku.missing_numbers())
