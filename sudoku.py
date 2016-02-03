@@ -50,6 +50,7 @@ class Sudoku:
 
         init_for_range_col = (block_index * self.SIZE) % 9
         end_for_range_col = init_for_range_col + self.SIZE
+
         for line_index in range(init_for_range_line, end_for_range_line):
             for column_index in range(init_for_range_col, end_for_range_col):
                 block.append(self.get(line_index, column_index))
@@ -108,7 +109,7 @@ class Sudoku:
         return error_number_block
 
     def evaluate(self):
-        return self.evaluate_block_errors() + self.evaluate_column_errors() + self.evaluate_line_errors()
+        return self.evaluate_line_errors() + self.evaluate_column_errors() + self.evaluate_block_errors()
 
     def copy(self):
         return Sudoku(self.puzzle)

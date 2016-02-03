@@ -13,7 +13,7 @@ class HillClimbingSudokuSolver:
         swaps = self.sudoku.get_possible_swaps()
 
         for _ in range(self.steps):
-            print "Step " + str(_)
+            print("Step " + str(_))
             best_swap = None
             best_evaluation = self.sudoku.evaluate()
 
@@ -30,9 +30,10 @@ class HillClimbingSudokuSolver:
             if best_swap == None: # atingimos um maximo local
                 # tem que ver melhor o que fazer aqui. Fiz a estratégia de mudanças aleatorias
                 import random
-                print "Triste."
-                print self.sudoku
-                print self.sudoku.evaluate()
+
+                print("Triste.")
+                print(self.sudoku)
+                print(self.sudoku.evaluate())
                 # muitas mudanças aleatorias para evitar que ele caia nesse maximo local novamente
                 self.sudoku.swap(random.choice(self.sudoku.emptyIndexes), random.choice(self.sudoku.emptyIndexes))
                 self.sudoku.swap(random.choice(self.sudoku.emptyIndexes), random.choice(self.sudoku.emptyIndexes))
