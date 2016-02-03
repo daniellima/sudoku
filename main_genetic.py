@@ -30,9 +30,9 @@ sudoku = Sudoku([
     _, 4, _,   _, _, _,   3, _, _
 ])
 
-ga = GeneticAlgorithm(sudoku)
+ga = GeneticAlgorithm(sudoku, 2)
 
-individuo = ga.generate_index_list()
+population = ga.generate_population()
 
-print(individuo)
-print(len(individuo))
+print(population)
+print(len(population))
