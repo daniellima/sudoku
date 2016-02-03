@@ -87,7 +87,8 @@ class GeneticAlgorithm:
         if random.random() > self.MUTATION_CHANCE: # mutation chance
             return individual
         mutation_position = random.choice(range(len(self.sudoku.emptyIndexes)))
-        auxiliar_list = range(self.sudoku.emptyIndexes)
+        auxiliar_list = list(range(len(self.sudoku.emptyIndexes)))
         auxiliar_list.reverse()
         individual[mutation_position] = random.choice(range(auxiliar_list[mutation_position]+1))
+        print("houve mutacao")
         return individual
