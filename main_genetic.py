@@ -44,9 +44,6 @@ print("Essa é o individuo real", individual)
 fitness_value = ga.fitness_function(ind)
 print('fitnes value', fitness_value)
 
-mutation_function = ga.mutation_function(ind)
-print('mutacao', mutation_function)
-
 pop = ga.generate_population()
 print('population', pop)
 ga.crossover(pop)
