@@ -36,13 +36,13 @@ class Sudoku:
         for line in range(self.WIDTH):
             column.append(self.get(line, column_index))
         return column
-		
-	def get_block(self, block_index)
-		block =[]
-		for line in range(self.SIZE):
-			for column in range(self.SIZE):
-				block.append(self.get(line, column))
-		return block
+
+    def get_block(self, block_index):
+        block =[]
+        for line in range(self.SIZE):
+            for column in range(self.SIZE):
+                block.append(self.get(line, column))
+        return block
 
     def missing_numbers(self):
         # create a list with every possible number.
