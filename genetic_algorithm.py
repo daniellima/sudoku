@@ -62,9 +62,31 @@ class GeneticAlgorithm:
 
     def mutation_function(self, individual_indexed_list):
         numbers_to_mutate = random.sample(individual_indexed_list,2)
-        
+
         number1 = numbers_to_mutate[0];
         number2 = numbers_to_mutate[1];
 
         numbers_to_mutate[0] = number2
         numbers_to_mutate[1] = number1
+
+
+    def select(self, population):
+        pop = list(population)
+        pop.sort(key=lambda ind: self.fitness_function(ind))
+        fits = [self.fitness_function(i) for i in pop]
+
+        total = 0
+        for i in range(len(fits)):
+            total += fits[i]
+            fits[i] = total
+
+        selected = []
+        selected.extend(pop[-1:]) # elitismo. O melhor já é sempre escolhido
+        for i in range(len(population)-1):
+            n = random.randint(1, total)
+            for j in range(len(fits)):
+                if n <= fits[j]:
+                    selected.append(pop[j])
+                    break
+
+        return selected
