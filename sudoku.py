@@ -25,6 +25,10 @@ class Sudoku:
 
         return swaps
 
+    def swap(self, this, that):
+        temp = self.puzzle[that]
+        self.puzzle[that] = self.puzzle[this]
+        self.puzzle[this] = temp
 
     def get_line(self, line_index):
         line =[]

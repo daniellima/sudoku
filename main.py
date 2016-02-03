@@ -28,8 +28,18 @@ sudoku = Sudoku([
     _, 4, _,   _, _, _,   3, _, _
 ])
 
-solver = HillClimbingSudokuSolver(sudoku, steps=50)
+solver = HillClimbingSudokuSolver(sudoku, steps=500)
 solved = solver.solve()
-print(solved)
+print solved
 
-#print [i for n in range(self.WIDTH) for i in [n] * self.WIDTH]
+# missing = sudoku.missing_numbers()
+# sudoku.random_fill_missing(missing)
+
+# print sudoku
+# print sudoku.evaluate()
+# sudoku.swap(0, 18)
+# print sudoku
+# print sudoku.evaluate()
+
+#print len(sudoku.emptyIndexes) == 81 - 17 # 64
+#print len(sudoku.get_possible_swaps()) == 2016 # somatorio de 63 até 1
