@@ -32,6 +32,7 @@ sudoku = Sudoku([
 solver = HillClimbingSudokuSolver(sudoku, steps=500)
 solved = solver.solve()
 print(solved)
+print(solved.evaluate())
 
 # missing = sudoku.missing_numbers()
 # sudoku.random_fill_missing(missing)
