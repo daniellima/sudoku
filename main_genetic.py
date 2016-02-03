@@ -30,7 +30,7 @@ sudoku = Sudoku([
     _, 4, _,   _, _, _,   3, _, _
 ])
 
-ga = GeneticAlgorithm(sudoku, 1)
+ga = GeneticAlgorithm(sudoku, 4)
 
 ind = ga.generate_individual_indexed_list()
 
@@ -43,6 +43,11 @@ print("Essa é o individuo real", individual)
 
 fitness_value = ga.fitness_function(ind)
 print('fitnes value', fitness_value)
+
+pop = ga.generate_population()
+print('population', pop)
+ga.crossover(pop)
+print('population', pop)
 
 # um, dois, tres, quatro, cinco, seis, sete, oito, nove = 0,0,0,0,0,0,0,0,0
 # for i in individual:

@@ -42,3 +42,20 @@ class GeneticAlgorithm:
         individual = self.get_individual_from_indexed_list(individual_indexed_list)
         new_sudoku.fill_missing(individual)
         return 216 - new_sudoku.evaluate()
+
+    def crossover(self, population):
+        for i in range(0, len(population), 2):
+            if i+1 == len(population): #população impar
+                # o ultimo continua
+                continue
+            random.seed()
+            if random.random() > 0.8: # 80% de chance de crossover
+                continue
+
+            ind1 = population[i]
+            ind2 = population[i+1]
+
+            point = random.choice(range(1, len(ind1)))
+
+            population[i] = ind1[0:point] + ind2[point:]
+            population[i+1] = ind2[0:point] + ind1[point:]
