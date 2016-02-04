@@ -3,14 +3,51 @@ import sys
 from matplotlib import pyplot as plt
 import numpy as np
 
+from main_genetic import run_tests, avg_times, reset_times
 
-def gerar_grafico(name, label, title):
+
+def caso1():
+    "erros por passos, com populacao = 6"
+    X = [50, 100, 200, 500, 1000, 10000]
+    Y = []
+    for x in X:
+        y = run_tests(steps=x, population_size=6)
+        Y.append(y)
+
+    gerar_grafico(
+        name="media_erros_passos_pop6",
+        label="erro",
+        title="erros por passos, com populacao = 6",
+        X=X,
+        Y=Y
+    )
+
+
+def caso2():
+    "erros por populacao, com passos = 100"
+    X = [10, 20, 30, 40, 50, 60, 70]
+    Y = []
+    Y = [63.73, 61.11, 58.04, 57.03, 55.08, 55.14, 55]
+    # for x in X:
+    #     y = run_tests(steps=100, population_size=x)
+    #     Y.append(y)
+
+    gerar_grafico(
+        name="media_erros_pop_passos100",
+        label="erro",
+        title="erros por populacao, com passos = 100",
+        X=X,
+        Y=Y
+    )
+
+
+def gerar_grafico(name, label, title, X, Y):
     fig = plt.figure()
-    steps = [50, 100, 200, 500, 1000]
-    errors = [68.05, 67.32, 66.21, 63.15, 60.43]
+    # steps = [50, 100, 200, 500, 1000, 10000]
+    # errors = [68.05, 67.32, 66.21, 63.15, 60.43, 47.77]
 
-    Y = errors
-    X = steps
+    # Y = errors
+    # X = steps
     width = .35
     ind = np.arange(len(Y))
     plt.bar(ind, Y, label=label)
@@ -34,11 +71,5 @@ def gerar_grafico(name, label, title):
     plt.close(fig)
 
 if __name__ == '__main__':
-    if len(sys.argv) == 4:
-        _, name, label, title = sys.argv
-    else:
-        name = 'media_erros_passos'
-        label = 'variavel'
-        title = 'titulo'
-
-    gerar_grafico(name, label, title)
+    # caso1()
+    caso2()

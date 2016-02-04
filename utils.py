@@ -38,3 +38,8 @@ def timing(f):
 
 def avg_times():
     return sum(TIMES)/len(TIMES)
+
+
+def reset_times():
+    global TIMES
+    TIMES = []

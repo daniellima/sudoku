@@ -13,7 +13,7 @@ Minimizar a quantidade de erros de números dispostos no tabuleiro.
 from genetic_solver import GeneticSolver
 from genetic_algorithm import GeneticAlgorithm
 from sudoku import Sudoku
-from utils import get_initial_sudoku, timing, avg_times
+from utils import get_initial_sudoku, timing, avg_times, reset_times
 
 
 @timing
@@ -85,6 +85,6 @@ def run_tests(steps, population_size):
     print("MEDIA:", evaluate_number/tests)
     return evaluate_number/tests
 
-run_tests(steps=100, population_size=50)
+# run_tests(steps=100, population_size=60)
 
-print("media de tempo: %0.3f ms" % avg_times())
+# print("media de tempo: %0.3f ms" % avg_times())
