@@ -1,5 +1,7 @@
 # coding: utf-8
+import time
 from sudoku import Sudoku
+
 
 def get_initial_sudoku():
     _ = Sudoku.EMPTY
@@ -17,3 +19,22 @@ def get_initial_sudoku():
         _, 4, _,   _, _, _,   3, _, _
     ])
     return sudoku
+
+TIMES = []
+
+
+def timing(f):
+    def wrap(*args):
+        global TIMES
+        time1 = time.time()
+        ret = f(*args)
+        time2 = time.time()
+        thistime = (time2-time1)*1000.0
+        print('%s function took %0.3f ms' % (f.__name__, thistime))
+        TIMES.append(thistime)
+        return ret
+    return wrap
+
+
+def avg_times():
+    return sum(TIMES)/len(TIMES)

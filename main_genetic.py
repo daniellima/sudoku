@@ -13,19 +13,19 @@ Minimizar a quantidade de erros de números dispostos no tabuleiro.
 from genetic_solver import GeneticSolver
 from genetic_algorithm import GeneticAlgorithm
 from sudoku import Sudoku
-from utils import get_initial_sudoku
+from utils import get_initial_sudoku, timing, avg_times
 
-tests = 100
-evaluate_number = 0
-for i in range(tests):
+
+@timing
+def single_test(steps, population_size, evaluate_number):
     sudoku = get_initial_sudoku()
 
     ga = GeneticAlgorithm(sudoku)
 
     solver = GeneticSolver(
         sudoku,
-        steps = 10000,
-        population_size = 6,
+        steps = steps,
+        population_size = population_size,
         crossover_chance = 0.8,
         mutation_chance = 0.01
         )
@@ -39,7 +39,8 @@ for i in range(tests):
     sudoku.fill_missing(ind)
 
     print(sudoku)
-    print(sudoku.evaluate())
+    evaluation = sudoku.evaluate()
+    print(evaluation)
     evaluate_number = evaluate_number + sudoku.evaluate()
 
     um, dois, tres, quatro, cinco, seis, sete, oito, nove = 0,0,0,0,0,0,0,0,0
@@ -72,5 +73,18 @@ for i in range(tests):
     print('Sete', sete)
     print('Oito', oito)
     print('Nove', nove)
+    return evaluate_number
 
-print(evaluate_number/tests)
+
+def run_tests(steps, population_size):
+    tests = 100
+    evaluate_number = 0
+    for i in range(tests):
+        evaluate_number = single_test(steps, population_size, evaluate_number)
+
+    print("MEDIA:", evaluate_number/tests)
+    return evaluate_number/tests
+
+run_tests(steps=100, population_size=50)
+
+print("media de tempo: %0.3f ms" % avg_times())
