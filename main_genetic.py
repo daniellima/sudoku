@@ -17,7 +17,7 @@ from utils import get_initial_sudoku, timing, avg_times, reset_times
 
 
 @timing
-def single_test(steps, population_size, evaluate_number):
+def single_test(steps, population_size, crossover_chance, mutation_chance, evaluate_number):
     sudoku = get_initial_sudoku()
 
     ga = GeneticAlgorithm(sudoku)
@@ -26,8 +26,8 @@ def single_test(steps, population_size, evaluate_number):
         sudoku,
         steps = steps,
         population_size = population_size,
-        crossover_chance = 0.8,
-        mutation_chance = 0.01
+        crossover_chance = crossover_chance,
+        mutation_chance = mutation_chance
         )
 
     population = solver.solve()
@@ -76,15 +76,17 @@ def single_test(steps, population_size, evaluate_number):
     return evaluate_number
 
 
-def run_tests(steps, population_size):
+def run_tests(steps, population_size, crossover_chance=0.8, mutation_chance=0.01):
     tests = 100
     evaluate_number = 0
     for i in range(tests):
-        evaluate_number = single_test(steps, population_size, evaluate_number)
+        evaluate_number = single_test(steps, population_size, crossover_chance, mutation_chance, evaluate_number)
 
     print("MEDIA:", evaluate_number/tests)
     return evaluate_number/tests
 
-# run_tests(steps=100, population_size=60)
 
-# print("media de tempo: %0.3f ms" % avg_times())
+if __name__ == '__main__':
+    run_tests(steps=2, population_size=2)
+
+    print("media de tempo: %0.3f ms" % avg_times())
