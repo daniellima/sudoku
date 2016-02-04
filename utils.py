@@ -37,6 +37,9 @@ def timing(f):
 
 
 def avg_times():
+    if len(TIMES) == 0:
+        return 0
+
     return sum(TIMES)/len(TIMES)
 
 

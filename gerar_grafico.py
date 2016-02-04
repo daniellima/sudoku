@@ -8,6 +8,7 @@ from main_genetic import run_tests, avg_times, reset_times
 
 def caso1():
     "erros por passos, com populacao = 6"
+    name = "media_erros_passos_pop6"
     X = [50, 100, 200, 500, 1000, 10000]
     Y = []
     # Y = [68.05, 67.32, 66.21, 63.15, 60.43, 47.77]
@@ -16,16 +17,20 @@ def caso1():
         Y.append(y)
 
     gerar_grafico(
-        name="media_erros_passos_pop6",
+        name=name,
         label="erro",
         title="erros por passos, com populacao = 6",
         X=X,
         Y=Y
     )
+    times = avg_times()
+    reset_times()
+    gerar_arquivo_dados(name, Y, times)
 
 
 def caso2():
     "erros por populacao, com passos = 100"
+    name = "media_erros_pop_passos100"
     X = [10, 20, 30, 40, 50, 60, 70]
     Y = []
     # Y = [63.73, 61.11, 58.04, 57.03, 55.08, 55.14, 55]
@@ -34,35 +39,42 @@ def caso2():
         Y.append(y)
 
     gerar_grafico(
-        name="media_erros_pop_passos100",
+        name=name,
         label="erro",
         title="erros por populacao, com passos = 100",
         X=X,
         Y=Y
     )
+    times = avg_times()
     reset_times()
+    gerar_arquivo_dados(name, Y, times)
 
 
 def caso3():
     "erros por crossover, com populacao = 40, passos = 100"
+    name = "avg_erro_cross_pop40_passos100"
     X = [0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
     Y = []
+    # Y = [1,2,3,4,5,6]
     for x in X:
         y = run_tests(steps=100, population_size=40, crossover_chance=x)
         Y.append(y)
 
     gerar_grafico(
-        name="avg_erro_cross_pop40_passos100",
+        name=name,
         label="erro",
         title="erros por crossover, com populacao = 40, passos = 100",
         X=X,
         Y=Y
     )
+    times = avg_times()
     reset_times()
+    gerar_arquivo_dados(name, Y, times)
 
 
 def caso4():
     "erros por mutacao, com populacao = 40, passos = 100"
+    name = "avg_erro_mut_pop40_passos100"
     X = [0.1, 0.2, 0.3, 0.4, 0.5]
     Y = []
     # Y = [55.13, 56.16, 56.41, 57.36, 57.79]
@@ -71,13 +83,22 @@ def caso4():
         Y.append(y)
 
     gerar_grafico(
-        name="avg_erro_mut_pop40_passos100",
+        name=name,
         label="erro",
         title="erros por mutacao, com populacao = 40, passos = 100",
         X=X,
         Y=Y
     )
+    times = avg_times()
     reset_times()
+    gerar_arquivo_dados(name, Y, times)
+
+
+def gerar_arquivo_dados(name, Y, times):
+    with open("%s.txt" % name, 'w') as f:
+        print("nome: %s" % name, file=f)
+        print("Valores Y:", Y, file=f)
+        print("Media de tempos: %0.3f ms" % times, file=f)
 
 
 def gerar_grafico(name, label, title, X, Y):
