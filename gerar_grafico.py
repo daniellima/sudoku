@@ -90,7 +90,7 @@ def gerar_grafico(name, label, title, X, Y):
 
     plt.title(title)
     # Now add the legend with some customizations.
-    legend = plt.legend(loc='best', shadow=True)
+    legend = plt.legend(loc='lower right', shadow=True)
     frame = legend.get_frame()
     frame.set_facecolor('0.90')
 
