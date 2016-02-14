@@ -81,7 +81,7 @@ def run_tests(steps, population_size, crossover_chance=0.8, mutation_chance=0.01
     evaluate_number = 0
     for i in range(tests):
         evaluate_number = single_test(steps, population_size, crossover_chance, mutation_chance, evaluate_number)
-        print("passo: %d/%d" % (i, tests-1))
+        print("teste: %d/%d" % (i, tests-1))
     print("MEDIA:", evaluate_number/tests)
     return evaluate_number/tests
 
