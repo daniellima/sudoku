@@ -79,7 +79,7 @@ def caso4():
     Y = []
     # Y = [55.13, 56.16, 56.41, 57.36, 57.79]
     for x in X:
-        y = run_tests(steps=100, population_size=40, mutacao=x)
+        y = run_tests(steps=100, population_size=40, mutation_chance=x)
         Y.append(y)
 
     gerar_grafico(
